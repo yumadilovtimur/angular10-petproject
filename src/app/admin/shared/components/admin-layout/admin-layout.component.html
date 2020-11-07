@@ -1,0 +1,23 @@
+<app-alert></app-alert>
+
+<nav>
+  <h1>
+    <a [routerLink]="['/']">Angular Admin Panel</a>
+  </h1>
+
+  <ul *ngIf="auth.isAuthenticated()">
+    <li routerLinkActive="active_link">
+      <a [routerLink]="['/admin', 'dashboard']">Главная</a>
+    </li>
+    <li routerLinkActive="active_link">
+      <a [routerLink]="['/admin', 'create']">Создать</a>
+    </li>
+    <li>
+      <a href="#" (click)="logout($event)">Выйти</a>
+    </li>
+  </ul>
+</nav>
+
+<div>
+  <router-outlet></router-outlet>
+</div>

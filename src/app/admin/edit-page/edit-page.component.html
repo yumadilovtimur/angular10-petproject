@@ -1,0 +1,25 @@
+<div *ngIf="form; else loading">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <div>
+      <label for="title">Название поста:</label>
+      <input type="title" id="text" formControlName="title">
+      <div style="color: red" *ngIf="form.get('title').touched && form.get('title').invalid">
+        <small *ngIf="form.get('title').errors.required">Введите название поста</small>
+      </div>
+    </div>
+
+    <div>
+      <quill-editor formControlName="text"></quill-editor>
+    </div>
+
+    <button type="submit" [disabled]="form.invalid || submitted">Обновить</button>
+
+  </form>
+</div>
+
+<ng-template #loading>
+  <p>
+    Загрузка...
+  </p>
+</ng-template>
